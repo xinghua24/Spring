@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+
+	<bean id="customers" class="com.xinghuaz.DI.CustomerCollection">
+		<!-- list -->
+		<property name="list">
+			<util:list  list-class="java.util.ArrayList">
+				<value>1</value>
+				<ref bean="personBean" />
+				<bean class="com.xinghuaz.DI.Person">
+					<property name="name" value="Alice"></property>
+					<property name="address" value="alice rd"></property>
+					<property name="age" value="10"></property>
+				</bean>
+			</util:list>
+		</property>
+
+		<!-- set -->
+		<property name="set">
+			<util:set set-class="java.util.HashSet">
+				<value>1</value>
+				<ref bean="personBean" />
+				<bean class="com.xinghuaz.DI.Person">
+					<property name="name" value="Alice"></property>
+					<property name="address" value="alice rd"></property>
+					<property name="age" value="10"></property>
+				</bean>
+			</util:set>
+		</property>
+
+
+		<!-- map -->
+		<property name="map">
+			<util:map map-class="java.util.HashMap">
+				<entry key="1" value="1"></entry>
+				<entry key="2" value-ref="personBean"></entry>
+				<entry key="3">
+					<bean class="com.xinghuaz.DI.Person">
+						<property name="name" value="Alice"></property>
+						<property name="address" value="alice rd"></property>
+						<property name="age" value="10"></property>
+					</bean>
+				</entry>
+			</util:map>
+		</property>
+
+		<!-- properties -->
+		<property name="pro">
+			<props>
+				<prop key="admin">admin@nospam.com</prop>
+				<prop key="support">support@nospam.com</prop>
+			</props>
+		</property>
+		
+	</bean>
+
+	<bean id="personBean" class="com.xinghuaz.DI.Person">
+		<property name="name" value="xing hua"></property>
+		<property name="address" value="fjewoi rd"></property>
+		<property name="age" value="20"></property>
+	</bean>
+</beans>

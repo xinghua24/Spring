@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="customers" class="com.xinghuaz.DI.CustomerCollection">
+		<!-- list -->
+		<property name="list">
+			<list>
+				<value>1</value>
+				<ref bean="personBean" />
+				<bean class="com.xinghuaz.DI.Person">
+					<property name="name" value="Alice"></property>
+					<property name="address" value="alice rd"></property>
+					<property name="age" value="10"></property>
+				</bean>
+			</list>
+		</property>
+
+		<!-- set -->
+		<property name="set">
+			<set>
+				<value>1</value>
+				<ref bean="personBean" />
+				<bean class="com.xinghuaz.DI.Person">
+					<property name="name" value="Alice"></property>
+					<property name="address" value="alice rd"></property>
+					<property name="age" value="10"></property>
+				</bean>
+			</set>
+		</property>
+
+
+		<!-- map -->
+		<property name="map">
+			<map>
+				<entry key="1" value="1"></entry>
+				<entry key="2" value-ref="personBean"></entry>
+				<entry key="3">
+					<bean class="com.xinghuaz.DI.Person">
+						<property name="name" value="Alice"></property>
+						<property name="address" value="alice rd"></property>
+						<property name="age" value="10"></property>
+					</bean>
+				</entry>
+			</map>
+		</property>
+
+		<!-- properties -->
+		<property name="pro">
+			<props>
+				<prop key="admin">admin@nospam.com</prop>
+				<prop key="support">support@nospam.com</prop>
+			</props>
+		</property>
+		
+	</bean>
+
+	<bean id="personBean" class="com.xinghuaz.DI.Person">
+		<property name="name" value="xing hua"></property>
+		<property name="address" value="fjewoi rd"></property>
+		<property name="age" value="20"></property>
+	</bean>
+</beans>

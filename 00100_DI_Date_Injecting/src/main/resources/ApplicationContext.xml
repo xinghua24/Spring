@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dateFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="yyyy-MM-dd" />
+	</bean>
+
+	<!-- use factory method to create bean -->
+	<bean id="customerBean1" class="com.xinghuaz.DI.Customer">
+		<property name="date">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2010-01-31" />
+			</bean>
+		</property>
+	</bean>
+
+
+	<!-- not working -->
+	<!-- 
+	<bean id="dateEditor" class="com.xinghuaz.DI.DateEditor">
+		<constructor-arg name="dateFormat">
+			<bean class="java.text.SimpleDateFormat">
+				<constructor-arg value="yyyy-MM-dd" />
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="allowEmpty" value="false" />
+	</bean>
+	 -->
+	<!-- not working -->
+	<!-- 
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="java.util.Date" value="dateEditor" />
+			</map>
+		</property>
+	</bean>
+	 -->
+	<!-- not working -->
+		<!-- 
+	<bean id="customerBean2" class="com.xinghuaz.DI.Customer">
+		<property name="date" value="2010-01-31" />
+	</bean>
+		 -->
+</beans>

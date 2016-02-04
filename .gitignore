@@ -1,0 +1,11 @@
+.gitignore~
+
+*/target/*
+.settings/
+.project
+.classpath
+
+.metadata
+.recommenders
+.RemoteSystemsTempFiles
+Servers
