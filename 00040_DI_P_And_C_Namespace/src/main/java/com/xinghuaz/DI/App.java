@@ -1,6 +1,5 @@
 package com.xinghuaz.DI;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App 
