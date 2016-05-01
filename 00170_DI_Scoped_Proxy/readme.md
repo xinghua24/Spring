@@ -5,23 +5,18 @@ In this example, requestService bean is request scoped. sessionService bean is s
 	<bean id="requestService" class="com.xinghua24.service.RequestService" scope="request">
 		<aop:scoped-proxy/>
 	</bean>
-
 	<bean id="sessionService" class="com.xinghua24.service.SessionService" scope="session">
 		<aop:scoped-proxy/>
 	</bean>
-
 	<bean id="prototypeService" class="com.xinghua24.service.PrototypeService" scope="prototype">
+		<aop:scoped-proxy/>
 	</bean>
-
 	<bean id="singletonService" class="com.xinghua24.service.SingletonService">
-		<property name="requestService" ref="requestService" />
-		<property name="sessionService" ref="sessionService" />
-		<property name="prototypeService" ref="prototypeService" />
 	</bean>
 ```xml
 
 
-Annotation based config, which has the same effect as the above XML config
+Annotation based config, which has the same effect as the above XML config. It sets proxyMode = ScopedProxyMode.TARGET_CLASS. The bean will be configured by CGLIB.
 
 ```java
 @Service
@@ -43,14 +38,6 @@ public class RequestService {
 
 if scoped-proxy element is missing then an exception is thrown: **Caused by: java.lang.IllegalStateException: No thread-bound request found**
 
-Output:
-
-```
---First browser - open for 5 times
-SingletonService count : 5 RequestService count : 1 SessionService count : 5 PrototypeService count : 5
-
---Second browser - open for 3 times
-SingletonService count : 8 RequestService count : 1 SessionService count : 3 PrototypeService count : 8 
-```
-
 Conclusion,  request scoped beans are created for every request. session scoped beans are created for every session. 
+
+Prototype scoped bean can also inject into singleton beans like request or session scoped beans. 

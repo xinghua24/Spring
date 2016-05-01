@@ -4,10 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
 @Service
-@Scope(value=BeanDefinition.SCOPE_PROTOTYPE)
+@Scope(value=BeanDefinition.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class PrototypeService {
 	private static final Logger LOG = LoggerFactory.getLogger(PrototypeService.class);
 	private int count;

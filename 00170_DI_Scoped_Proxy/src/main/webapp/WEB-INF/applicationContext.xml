@@ -16,10 +16,8 @@
 		<aop:scoped-proxy/>
 	</bean>
 	<bean id="prototypeService" class="com.xinghua24.service.PrototypeService" scope="prototype">
+		<aop:scoped-proxy/>
 	</bean>
 	<bean id="singletonService" class="com.xinghua24.service.SingletonService">
-		<property name="requestService" ref="requestService" />
-		<property name="sessionService" ref="sessionService" />
-		<property name="prototypeService" ref="prototypeService" />
 	</bean>
 </beans>
