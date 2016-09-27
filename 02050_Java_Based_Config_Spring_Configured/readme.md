@@ -56,3 +56,7 @@ add @EnableSpringConfigured Annotation to config file, the xml equivalent is
 
 Example to look at  
 [http://www.javacodegeeks.com/2013/09/spring-configurable-magic.html](http://www.javacodegeeks.com/2013/09/spring-configurable-magic.html)
+
+## Configurable
+@Configurable(preConstruction = true)tells Spring to inject dependencies into the object before the constructor is run. 
+So objects NOT created by Spring can have dependencies injected.
