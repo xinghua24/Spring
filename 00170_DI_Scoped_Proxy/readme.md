@@ -13,7 +13,7 @@ In this example, requestService bean is request scoped. sessionService bean is s
 	</bean>
 	<bean id="singletonService" class="com.xinghua24.service.SingletonService">
 	</bean>
-```xml
+```
 
 
 Annotation based config, which has the same effect as the above XML config. It sets proxyMode = ScopedProxyMode.TARGET_CLASS. The bean will be configured by CGLIB.
